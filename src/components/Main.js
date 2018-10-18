@@ -32,6 +32,9 @@ function get30DegRandom(){
 }
 
 class ImgFigure extends React.Component {
+	constructor(props) {
+	  super(props);
+    }
 
     //imgFigure的点击处理函数
     handleClick(e) {
@@ -51,7 +54,7 @@ class ImgFigure extends React.Component {
 
         //如果props属性中指定了这张图片的旋转位置，则使用
 		if(this.props.arrange.rotate){
-			['Moz','ms','webkit'].forEach(function(value){
+			['Moz','ms','Webkit'].forEach(function(value){
 			    styleObj[value + 'Transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
 			}.bind(this));
 
@@ -61,11 +64,11 @@ class ImgFigure extends React.Component {
             imgFigureClassName += this.props.arrange.isInverse? ' is-inverse': '';
  
 		return (
-           <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick}>
+           <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick.bind(this)}>
              <img src={this.props.data.imageURL} alt={this.props.data.title}/>
              <figcaption className="img-title">
              	<h2>{this.props.data.title}</h2>
-             	 <div className="img-back" onClick={this.handleClick}>
+             	 <div className="img-back" onClick={this.handleClick.bind(this)}>
              	 	<p>
              	 		{this.props.data.desc}
              	 	</p>

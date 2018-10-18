@@ -38,6 +38,21 @@ html, body {
        background-color:#fff;
      
        box-sizing:border-box;
+       cursor: pointer;
+       transform-style:preserve-3d;
+
+       &.is-inverse {
+        transform: rotateY(180deg);
+       }
+     }
+
+     .img-back{
+        position:absolute;
+        left:0;
+        top:0;
+        width:320px;
+        height:360px;
+        transform: rotateY(-180deg);
      }
 
      img{
